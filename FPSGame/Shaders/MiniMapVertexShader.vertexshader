@@ -1,0 +1,16 @@
+#version 330 core
+layout (location = 0) in vec3 minimap_modelspace;
+layout (location = 1) in vec3 minimap_color;
+
+out vec3 fragColor;
+
+uniform mat4 ModelMatrix;
+
+void main()
+{
+    
+    fragColor = minimap_color;
+    vec4 position = ModelMatrix * vec4(minimap_modelspace, 1.0);
+
+    gl_Position = position;
+} 

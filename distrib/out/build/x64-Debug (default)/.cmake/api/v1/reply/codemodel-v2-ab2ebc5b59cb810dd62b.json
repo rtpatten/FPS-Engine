@@ -1,0 +1,55 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "Project",
+					"targetIndexes" : 
+					[
+						0
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "selectoptimus::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-selectoptimus-Debug-5f2c9115886878d9e281.json",
+					"name" : "selectoptimus",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/distrib/out/build/x64-Debug (default)",
+		"source" : "C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/distrib"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 1
+	}
+}

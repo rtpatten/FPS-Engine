@@ -1,0 +1,82 @@
+#version 330 core
+
+// Input from Vertex Shader
+in vec2 uv_vertex;
+in vec3 surfaceNormals;
+in vec3 fragmentPosition;
+
+// Ouput data
+out vec3 color;
+
+// Texture
+uniform sampler2D text;
+uniform vec3 cameraPos;
+uniform vec3 lightPos;
+uniform vec2 scr_center;
+
+void main()
+{
+	//VARIABLES FOR THE FLASHLIGHT
+	float intensity = 0;							//To increase if needed
+	float radius = 100;
+	float outerRadius = radius + 50;
+	float addedIntensity = 1.0;
+	float distance = length(cameraPos - fragmentPosition);	//Using a quadratic function to calculate light attenuation
+	float constant = 1.0;
+	float linear = 0.09;
+	float quad = 0.032;
+	float pointX = gl_FragCoord.x - scr_center.x;	// Obtain the values relative to the FragCoord
+	float pointY = gl_FragCoord.y - scr_center.y;
+	float result =pow(pointX, 2) + pow(pointY, 2) - pow(radius, 2);  //Formula for circle
+	vec3 lightPosition = lightPos;
+
+	//LIGHTING FROM THE MOON'S LIGHT
+	//Light position and color for diffuse and specular shading
+	vec3 lightColor = normalize(vec3(255.0, 230.0, 180.0));
+
+	//Calculations on light position relative to the fragment's position
+	vec3 norm = normalize(surfaceNormals);
+	vec3 lightDirection = normalize(lightPosition - fragmentPosition);
+
+	//Calculating on the viewer's position to the fragment's position for specular lighting
+	vec3 viewDirection = normalize(cameraPos - fragmentPosition);
+	vec3 reflectDirection = reflect(-lightDirection, norm);		//Calculte the reflection from incoming light
+
+	//Calculating the intensity of the spectular lighting
+	float specularIntensity = 0.5;
+	float specularFactor = pow(max(dot(viewDirection, reflectDirection), 0.0), 64);
+	vec3 specularLighting = specularIntensity * specularFactor * lightColor;
+
+	//Calculating the intensity of diffuse lighting to the fragment
+	float diffuseFactor = max(dot(norm, lightDirection), 0.0);
+	vec3 diffuseLighting = diffuseFactor * lightColor;
+
+	//Ambient lighting 
+	float ambientIntensity = 0.3;
+
+	//Apply ambient intensity to the color of surface
+	vec3 ambient = ambientIntensity * lightColor;
+	
+	//Points that result lower than 0, are within the circle
+	if (result < 0) {
+		// Let's apply light fading away from distant objects
+		float attenuation = 1 / (constant + (linear * distance) + (quad * pow(distance, 2)));
+
+		intensity = addedIntensity*attenuation;
+	} else {
+		// Let's draw the light fading way from the center of the light
+		if (result + (radius*radius) - (outerRadius*outerRadius) < 0) {
+			float radDis = sqrt((pointX*pointX) + (pointY*pointY));
+			float normVal = (outerRadius - radDis) / (outerRadius - radius);
+			
+			// Let's apply light fading away from distant objects
+			float attenuation = 1 / (constant + (linear * distance) + (quad * pow(distance, 2)));
+
+			intensity = addedIntensity*attenuation*normVal;
+		}	
+	}
+
+	//Apply the specular and diffuse lightings to the ambient lighting + the flashlight intensity
+	color = (ambient + diffuseLighting + specularLighting + intensity) * texture(text, uv_vertex).rgb;
+
+}

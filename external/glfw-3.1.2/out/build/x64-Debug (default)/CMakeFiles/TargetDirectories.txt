@@ -1,0 +1,12 @@
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/uninstall.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/install/local.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/install.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/edit_cache.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/rebuild_cache.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/CMakeFiles/list_install_components.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/rebuild_cache.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/glfw.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/install/local.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/install.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/edit_cache.dir
+C:/Users/ryanp/OneDrive/Documents/Basic-FPS-OpenGL/external/glfw-3.1.2/out/build/x64-Debug (default)/src/CMakeFiles/list_install_components.dir

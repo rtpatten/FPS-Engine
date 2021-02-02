@@ -1,0 +1,35 @@
+#version 330 core
+
+in vec3 fragColor;
+
+out vec4 color;
+
+uniform vec2 screenRes;
+
+void main()
+{
+    float ratio = screenRes.x / screenRes.y;
+    float length = 240;
+    float xpos = screenRes.x*5/8+60;
+    float ypos = screenRes.y*1/13+5;        //Nothing smart, but got save me i'm running behind schedule
+
+    
+    float targetX = (xpos*2 + length) / 2;
+    float targetY = (ypos*2 + length) / 2;
+    float pointX = gl_FragCoord.x - targetX;
+    float pointY = gl_FragCoord.y - targetY;
+    float radius = 5;
+
+    if ((pointX*pointX) + (pointY*pointY) - (radius*radius) < 0) {
+        color = vec4(1.0, 0.0, 0.0, 0.0);
+    } else {
+        if (gl_FragCoord.x < xpos) { discard; }
+        if (gl_FragCoord.x > xpos+length) { discard; }
+        if (gl_FragCoord.y < ypos) { discard; }
+        if (gl_FragCoord.y > ypos+length) { discard; }    
+
+        color = vec4(fragColor, 1.0);
+    }
+
+    
+}
